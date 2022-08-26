@@ -1,0 +1,36 @@
+
+.screen.standard-dark {
+    --bg: #181F33;
+    --color: azure;
+}
+
+.screen.standard-light {
+    --bg: #eee;
+    --color: #36362C;
+}
+
+.screen.dracula {
+    --bg: #1E0936;
+    --color: #FFE53D;
+}
+
+.screen {
+    background: var(--bg);
+    border-radius: 10px;
+    margin: 32px 0 24px 0;
+    overflow-x: scroll;
+    transition: background-color .33s;
+}
+
+.screen p {
+    color: var(--color);
+    font-family: spartan;
+    font-size: 56px;
+    line-height: 52px;
+    letter-spacing: -1px;
+    min-width: max-content;
+    width: 100%;
+    padding: 40px 32px 36px 32px;
+    text-align: end;
+    transition: color .33s;
+}

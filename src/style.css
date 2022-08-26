@@ -1,0 +1,41 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --standard-dark-bg: #3A4663;
+  --standard-light-bg: #E6E6E6;
+  --dracula-bg: #17062A;
+}
+
+@font-face {
+  font-family: spartan;
+  src: url("./assets/LeagueSpartan-Bold.ttf");
+}
+
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  transition: background-color .33s;
+}
+
+body.standard-dark {
+  background: var(--standard-dark-bg);
+}
+
+body.standard-light {
+  background: var(--standard-light-bg);
+}
+
+body.dracula {
+  background: var(--dracula-bg);
+}
+
+.App {
+  width: 540px;
+}

@@ -1,0 +1,135 @@
+.keyboard.standard-dark {
+    --bg: #242D44;
+    --button-bg: #EAE3DC;
+    --shadow-color: #B3A497;
+    --color: #434A59;
+    --delete-bg: #647198;
+    --delete-shadow-color: #414E73;
+    --equal-bg: #D03F2F;
+    --equal-shadow-color: #93261A;
+    --equal-color: azure;
+    --main-key-hover-bg:#fffffe; 
+    --delete-hover-bg: #A2B2E1;
+    --equal-hover-bg: #F96B5B;
+}
+
+.keyboard.standard-light {
+    --bg: #D2CDCD;
+    --button-bg: #E5E4E1;
+    --shadow-color: #A79E91;
+    --color: #36362C;
+    --delete-bg: #378187;
+    --delete-shadow-color: #1B6066;
+    --equal-bg: #C85402;
+    --equal-shadow-color: #873901;
+    --equal-color: azure;
+    --main-key-hover-bg: azure;
+    --delete-hover-bg: #62B5BC;
+    --equal-hover-bg: #FF8A38;
+}
+
+.keyboard.dracula {
+    --bg: #1E0936;
+    --button-bg: #331C4D;
+    --shadow-color: #881C9E;
+    --color: #FFE53D;
+    --delete-bg: #56077C;
+    --delete-shadow-color: #BE15F4;
+    --equal-bg: #00DED0;
+    --equal-shadow-color: #6CF9F1;
+    --equal-color: #1A2327;
+    --main-key-hover-bg: #6C34AC;
+    --delete-hover-bg: #8631AF;
+    --equal-hover-bg: #93FFF8;
+}
+
+.keyboard {
+    --delete-color: azure;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px;
+    border-radius: 10px;
+}
+
+.keyboard button {
+    transition: background-color .33s, transform .33s;
+}
+
+.keyboard button:active {
+    transform: scale(.985);
+}
+
+.keyboard .main-keys {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.keyboard .main-keys button {
+    background: var(--button-bg);
+    box-shadow: inset 0px -4px 0px var(--shadow-color);
+    color: var(--color);
+    font-family: spartan;
+    font-size: 40px;
+    line-height: 37px;
+    width: 100px;
+    height: 64px;
+    border-radius: 10px;
+    border: none;
+}
+
+.keyboard .main-keys .delete-key {
+    background: var(--delete-bg);
+    color: var(--delete-color);
+    font-size: 28px;
+    line-height: 26px;
+    letter-spacing: -.5px;
+    box-shadow: inset 0px -4px 0px var(--delete-shadow-color);
+}
+
+.keyboard .result-keys {
+    display: flex;
+    gap: 24px;
+}
+
+.keyboard .result-keys button {
+    width: 227px;
+    height: 64px;
+    font-family: spartan;
+    font-size: 28px;
+    line-height: 26px;
+    letter-spacing: -.5px;
+    border: none;
+    border-radius: 10px;
+}
+
+.keyboard .result-keys .reset-button {
+    background: var(--delete-bg);
+    color: var(--delete-color);
+    box-shadow: inset 0px -4px 0px var(--delete-shadow-color);
+}
+
+.keyboard .result-keys .equal-button {
+    background: var(--equal-bg);
+    color: var(--equal-color);
+    box-shadow: inset 0px -4px 0px var(--equal-shadow-color);
+}
+
+.keyboard .main-keys button:hover {
+    background: var(--main-key-hover-bg);
+}
+
+.keyboard .main-keys .delete-key:hover {
+    background: var(--delete-hover-bg);
+}
+
+.keyboard .result-keys .reset-button:hover {
+    background: var(--delete-hover-bg);
+}
+
+.keyboard .result-keys .equal-button:hover {
+    background: var(--equal-hover-bg);
+}

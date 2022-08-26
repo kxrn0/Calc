@@ -1,0 +1,95 @@
+.three-way-toggle {
+  --area-width: 70px;
+  --area-height: 26px;
+  --area-padding: 5px;
+  --ball-width: 16px;
+  width: fit-content;
+}
+
+.three-way-toggle.standard-dark {
+  --color: azure;
+  --area-body-bg: #242D44;
+  --ball-bg: #D03F2F;
+  --ball-hover-bg: #F96B5B;
+}
+
+.three-way-toggle.standard-light {
+  --color: #36362C;
+  --area-body-bg: #D2CDCD;
+  --ball-bg: #C85402;
+  --ball-hover-bg: #FF8A38;
+}
+
+.three-way-toggle.dracula {
+  --color: #FFE53D;
+  --area-body-bg: #1E0936;
+  --ball-bg: #00DED0;
+  --ball-hover-bg: #93FFF8;
+}
+
+.three-way-toggle .labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  padding: 0 5px;
+}
+
+.three-way-toggle .labels label {
+  color: var(--color);
+  flex-grow: 1;
+  font-family: spartan;
+  font-size: 12px;
+  line-height: 13px;
+  text-align: center;
+}
+
+.three-way-toggle .choices {
+  width: var(--area-width);
+  display: flex;
+  position: relative;
+}
+
+.three-way-toggle .choices input[type="radio"] {
+  background: var(--area-body-bg);
+  appearance: none;
+  display: block;
+  flex-grow: 1;
+  height: var(--area-height);
+}
+
+.three-way-toggle .choices input[type="radio"]:first-of-type {
+  border-top-left-radius: calc(var(--area-height) * 2);
+  border-bottom-left-radius: calc(var(--area-height) * 2);
+}
+
+.three-way-toggle .choices input[type="radio"]:last-of-type {
+  border-top-right-radius: calc(var(--area-height) * 2);
+  border-bottom-right-radius: calc(var(--area-height) * 2);
+}
+
+.three-way-toggle .choices .ball {
+  background: var(--ball-bg);
+  width: var(--ball-width);
+  height: var(--ball-width);
+  position: absolute;
+  top: calc(50% - var(--ball-width) / 2);
+  border-radius: 50%;
+  transition: transform .33s, background-color .33s;
+}
+
+.three-way-toggle .choices .ball:hover {
+  background: var(--ball-hover-bg);
+}
+
+.three-way-toggle .choices input[type="radio"]:first-of-type:checked~.ball {
+  transform: translateX(var(--area-padding));
+}
+
+.three-way-toggle .choices input[type="radio"]:last-of-type:checked~.ball {
+  transform: translateX(calc(var(--area-width) - var(--area-padding) - var(--ball-width)));
+}
+
+.three-way-toggle .choices input[type="radio"]:nth-of-type(even):checked~.ball {
+  transform: translateX(calc(var(--area-width) / 2 - var(--ball-width) / 2));
+}

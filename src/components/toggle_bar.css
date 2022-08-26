@@ -1,0 +1,42 @@
+.toggle-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.toggle-bar.standard-dark {
+    --color: azure;   
+}
+
+.toggle-bar.standard-light {
+    --color: #36362C;
+}
+
+.toggle-bar.dracula {
+    --color: #FFE53D;
+}
+
+.toggle-bar .switch-wrapper {
+    display: flex;
+    align-items: flex-end;
+    gap: 26px;
+}
+
+.toggle-bar .logo {
+    color: var(--color);
+    font-family: spartan;
+    font-size: 32px;
+    letter-spacing: -.5px;
+    line-height: 29px;
+    transition: color .33s;
+}
+
+.toggle-bar .switch-wrapper p {
+    color: var(--color);
+    font-family: spartan;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 1px;
+    margin-bottom: 7px;
+    transition: color .33s;
+}
