@@ -8,7 +8,7 @@
     --equal-bg: #D03F2F;
     --equal-shadow-color: #93261A;
     --equal-color: azure;
-    --main-key-hover-bg:#fffffe; 
+    --main-key-hover-bg: #fffffe;
     --delete-hover-bg: #A2B2E1;
     --equal-hover-bg: #F96B5B;
 }
@@ -118,18 +118,74 @@
     box-shadow: inset 0px -4px 0px var(--equal-shadow-color);
 }
 
-.keyboard .main-keys button:hover {
-    background: var(--main-key-hover-bg);
+@media screen and (min-width: 900px) {
+    .keyboard .main-keys button:hover {
+        background: var(--main-key-hover-bg);
+    }
+
+    .keyboard .main-keys .delete-key:hover {
+        background: var(--delete-hover-bg);
+    }
+
+    .keyboard .result-keys .reset-button:hover {
+        background: var(--delete-hover-bg);
+    }
+
+    .keyboard .result-keys .equal-button:hover {
+        background: var(--equal-hover-bg);
+    }
 }
 
-.keyboard .main-keys .delete-key:hover {
-    background: var(--delete-hover-bg);
+@media screen and (max-width: 900px) {
+    .keyboard .main-keys button:active {
+        background: var(--main-key-hover-bg);
+    }
+
+    .keyboard .main-keys .delete-key:active {
+        background: var(--delete-hover-bg);
+    }
+
+    .keyboard .result-keys .reset-button:active {
+        background: var(--delete-hover-bg);
+    }
+
+    .keyboard .result-keys .equal-button:active {
+        background: var(--equal-hover-bg);
+    }
 }
 
-.keyboard .result-keys .reset-button:hover {
-    background: var(--delete-hover-bg);
-}
-
-.keyboard .result-keys .equal-button:hover {
-    background: var(--equal-hover-bg);
+@media screen and (max-width: 600px) {
+    .keyboard {
+        gap: 13px;
+        padding: 24px;
+    }
+    
+    .keyboard .main-keys {
+        gap: 13px;
+    }
+    
+    .keyboard .main-keys button {
+        font-size: 32px;
+        line-height: 30px;
+        width: 60px;
+        border-radius: 5px;
+    }
+    
+    .keyboard .main-keys .delete-key {
+        font-size: 20px;
+        line-height: 18px;
+        letter-spacing: -.33px;
+    }
+    
+    .keyboard .result-keys {
+        gap: 13px;
+    }
+    
+    .keyboard .result-keys button {
+        width: 133px;
+        font-size: 20px;
+        line-height: 18px;
+        letter-spacing: -.33px;
+        border-radius: 5px;
+    }
 }

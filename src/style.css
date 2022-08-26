@@ -39,3 +39,9 @@ body.dracula {
 .App {
   width: 540px;
 }
+
+@media screen and (max-width: 600px) {
+  .App {
+    width: 327px;
+  }
+}

@@ -11,7 +11,7 @@ function App() {
     dracula: "dracula"
   };
   const [theme, set_theme] = useState(themes.dark);
-  const [currentExpression, set_current_expression] = useState('25/2x32-5');
+  const [currentExpression, set_current_expression] = useState('25/2x32');
 
 
   function change_body_theme(toAdd, removeList) {

@@ -78,10 +78,6 @@
   transition: transform .33s, background-color .33s;
 }
 
-.three-way-toggle .choices .ball:hover {
-  background: var(--ball-hover-bg);
-}
-
 .three-way-toggle .choices input[type="radio"]:first-of-type:checked~.ball {
   transform: translateX(var(--area-padding));
 }
@@ -92,4 +88,10 @@
 
 .three-way-toggle .choices input[type="radio"]:nth-of-type(even):checked~.ball {
   transform: translateX(calc(var(--area-width) / 2 - var(--ball-width) / 2));
+}
+
+@media screen and (min-width: 900px) {
+  .three-way-toggle .choices .ball:hover {
+    background: var(--ball-hover-bg);
+  }
 }

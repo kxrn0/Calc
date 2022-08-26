@@ -34,3 +34,12 @@
     text-align: end;
     transition: color .33s;
 }
+
+@media screen and (max-width: 600px) {
+    .screen p {
+        font-size: 40px;
+        line-height: 37px;
+        letter-spacing: -.7px;
+        padding: 30px 24px 22px 24px;
+    }   
+}
