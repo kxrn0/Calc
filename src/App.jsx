@@ -95,7 +95,6 @@ function App() {
         keys.push(`${i}`);
 
       if (!!~keys.indexOf(key)) {
-        console.log(`key: ${key}`);
         if (key === '*')
           key = 'x';
         handle_key_press(key);
