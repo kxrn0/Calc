@@ -136,7 +136,7 @@
     }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (hover: hover) {
     .keyboard .main-keys button:active {
         background: var(--main-key-hover-bg);
     }

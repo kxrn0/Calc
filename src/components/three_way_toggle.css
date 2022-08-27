@@ -90,7 +90,7 @@
   transform: translateX(calc(var(--area-width) / 2 - var(--ball-width) / 2));
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (hover: hover) {
   .three-way-toggle .choices .ball:hover {
     background: var(--ball-hover-bg);
   }
