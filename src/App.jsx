@@ -13,6 +13,7 @@ function App() {
   };
   const [theme, set_theme] = useState(themes.dark);
   const [currentExpression, set_current_expression] = useState('0');
+  const [errorState, set_error_state] = useState(false);
 
   function change_body_theme(toAdd, removeList) {
     const body = document.documentElement.querySelector("body");
@@ -29,9 +30,17 @@ function App() {
     const numberReg = /\d/;
     const minusReg = /-/;
     const operationReg = /[+\-x\/]/;
-    
-    console.log(`value: ${value}, current: ${currentExpression}`);
 
+    if (errorState) {
+      if (value != '=') {
+        set_current_expression('0');
+        set_error_state(false);
+        return;
+      }
+      else
+        return;
+    }
+    
     if (currentExpression === '0' && value != '.') {
       if (numberReg.test(value) || minusReg.test(value))
         set_current_expression(value);
@@ -72,34 +81,46 @@ function App() {
         }
         else if (value === '=') {
           const isLastCharOp = operationReg.test(currentExpression[currentExpression.length - 1]);
-          let expression;
+          let expression, finalValue;
           
           expression = isLastCharOp ? currentExpression.slice(0, currentExpression.length - 1) : currentExpression;
-          if (expression[expression.length - 1] == '.')
+          if (expression[expression.length - 1] === '.')
             expression = expression.slice(0, expression.length - 1);
 
-          set_current_expression(String(Number(stringMath(expression.replace(/x/g, '*')).toFixed(10))));
+          try {
+            finalValue = String(Number(stringMath(expression.replace(/x/g, '*')).toFixed(10)));
+          }
+          catch (error) {
+            finalValue = "NaN";
+            set_error_state(true);
+          }
+
+          set_current_expression(finalValue);
         }
       }
     }
   }
 
   useEffect(() => {
-    document.addEventListener("keydown", event => {
+    function  handle_keyboard(event) {
       const keys = ['+', '-', '*', '/'];
       let key;
       
-      key = event.key;
-
       for (let i = 0; i < 10; i++)
         keys.push(`${i}`);
+      key = event.key;
 
       if (!!~keys.indexOf(key)) {
         if (key === '*')
           key = 'x';
-        handle_key_press(key);
+        console.log(currentExpression);
+        handle_key_press(key)
       }
-    })
+    }
+
+    document.addEventListener("keydown", handle_keyboard);
+
+    return () => document.removeEventListener("keydown", handle_keyboard);
   }, []);
 
   useEffect(() => {
