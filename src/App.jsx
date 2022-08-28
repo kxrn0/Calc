@@ -29,18 +29,16 @@ function App() {
   function handle_key_press(value) {
     const numberReg = /\d/;
     const minusReg = /-/;
-    const operationReg = /[+\-x\/]/;
+    const operationReg = /[+\-x*\/]/;
 
     if (errorState) {
       if (value != '=') {
         set_current_expression('0');
         set_error_state(false);
-        return;
       }
-      else
-        return;
+      return;
     }
-    
+
     if (currentExpression === '0' && value != '.') {
       if (numberReg.test(value) || minusReg.test(value))
         set_current_expression(value);
@@ -82,7 +80,7 @@ function App() {
         else if (value === '=') {
           const isLastCharOp = operationReg.test(currentExpression[currentExpression.length - 1]);
           let expression, finalValue;
-          
+
           expression = isLastCharOp ? currentExpression.slice(0, currentExpression.length - 1) : currentExpression;
           if (expression[expression.length - 1] === '.')
             expression = expression.slice(0, expression.length - 1);
@@ -102,18 +100,29 @@ function App() {
   }
 
   useEffect(() => {
-    function  handle_keyboard(event) {
-      const keys = ['+', '-', '*', '/'];
+    function handle_keyboard(event) {
+      const keys = ['+', '-', '*', 'x', '/', '=', '.', "Backspace", "Enter", "Escape"];
       let key;
-      
+
       for (let i = 0; i < 10; i++)
         keys.push(`${i}`);
       key = event.key;
 
       if (!!~keys.indexOf(key)) {
-        if (key === '*')
-          key = 'x';
-        console.log(currentExpression);
+        switch(key) {
+          case "Enter":
+            key = '=';
+            break;
+          case "Backspace":
+            key = "DEL";
+            break;
+          case "Escape":
+            key = "RESET";
+            break;
+          case '*':
+            key = 'x';
+            break;
+        }
         handle_key_press(key)
       }
     }
@@ -121,7 +130,7 @@ function App() {
     document.addEventListener("keydown", handle_keyboard);
 
     return () => document.removeEventListener("keydown", handle_keyboard);
-  }, []);
+  }, [currentExpression]);
 
   useEffect(() => {
     switch (theme) {
