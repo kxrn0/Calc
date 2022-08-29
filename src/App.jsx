@@ -26,6 +26,16 @@ function App() {
     set_theme(theme);
   }
 
+  function clean_expression(expression) {
+    const operationReg = /[+\-x*\/]/;
+    const numReg = /\d*\.?\d*/g;
+  
+    while (expression[expression.length - 1] == '.' || operationReg.test(expression[expression.length - 1]))
+      expression = expression.slice(0, expression.length - 1);
+    
+    return expression.replace(numReg, match => match ? Number(match) : '');
+  }
+
   function handle_key_press(value) {
     const numberReg = /\d/;
     const minusReg = /-/;
@@ -78,12 +88,8 @@ function App() {
           set_current_expression('0');
         }
         else if (value === '=') {
-          const isLastCharOp = operationReg.test(currentExpression[currentExpression.length - 1]);
-          let expression, finalValue;
-
-          expression = isLastCharOp ? currentExpression.slice(0, currentExpression.length - 1) : currentExpression;
-          if (expression[expression.length - 1] === '.')
-            expression = expression.slice(0, expression.length - 1);
+          const expression = clean_expression(currentExpression);
+          let finalValue;
 
           try {
             finalValue = String(Number(stringMath(expression.replace(/x/g, '*')).toFixed(10)));
